@@ -8,7 +8,7 @@ Install
 cargo install waybar-docker
 ```
 
-Add this to you `config.jsonc
+Add this to you `config.jsonc`
 
 ```json
 {
