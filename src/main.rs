@@ -1,9 +1,9 @@
 use std::error::Error;
 
 use bollard::{
+    Docker,
     query_parameters::ListContainersOptions,
     secret::{ContainerSummary, Port, PortTypeEnum},
-    Docker,
 };
 use serde::Serialize;
 #[derive(Serialize, Default)]
@@ -56,7 +56,11 @@ fn summary_to_line(summary: ContainerSummary) -> String {
 async fn build_module() -> Result<WaybarModule, Box<dyn Error>> {
     let containers = get_running_containers().await?;
     let module = WaybarModule::new(
-        format!("  {}", containers.len()),
+        if containers.is_empty() {
+            "".to_string()
+        } else {
+            format!("  {}", containers.len())
+        },
         containers
             .iter()
             .map(|x| summary_to_line(x.clone()))
