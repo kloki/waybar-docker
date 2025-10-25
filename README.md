@@ -2,18 +2,16 @@
 
 A docker module for [waybar](https://github.com/Alexays/Waybar) that works for me.
 
-Install
+## Installation
 
-```bash
-cargo install waybar-docker
-```
+Check [Releases](https://github.com/kloki/clogs/releases) for binaries and installers
 
 Add this to you `config.jsonc`
 
 ```json
 {
   "custom/docker": {
-    "exec": "~/.cargo/bin/waybar-docker",
+    "exec": "waybar-docker",
     "return-type": "json",
     "interval": 5
   }
